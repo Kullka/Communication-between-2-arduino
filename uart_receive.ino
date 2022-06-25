@@ -34,7 +34,7 @@ void uartRead() {
   if (idle) {
     index = 0;
     idle = false;
-    TCNT1 = 63900; 
+    TCNT1 = 64500; 
   }
 }
 
