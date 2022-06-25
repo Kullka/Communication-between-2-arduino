@@ -32,8 +32,8 @@ void setBaudRate() {
   TCCR1A = 0;
   TCCR1B = 0;
   TIMSK1 = 0;
-  TCNT1 = 65510;
-  TCCR1B |= (1<<CS11) | (1<<CS10);
+  TCNT1 = 63869;
+  TCCR1B |= (1<<CS10);
   TIMSK1 = (1<<TOIE1);   // overflow interrupt enable
   sei();
 }
@@ -46,13 +46,13 @@ void uartSend(char c) {
         groupBits[bits] = 1;
       else
         groupBits[bits] = 0;
-    TCNT1 = 65510;
+    TCNT1 = 63869;
     index = 0;
   }
 }
 
 ISR (TIMER1_OVF_vect) {
-  TCNT1 = 65510;
+  TCNT1 = 63869;
   if (!idle) {
     if (index==0) {
       digitalWrite(pinOut, LOW);
